@@ -14,7 +14,9 @@ You need the following installations in your local machine to build and run the 
 | Git | https://git-scm.com/downloads |
 
 Also is necessary that the **authentication** and **backend** microservices are already running.
+
 https://github.com/MDarqueaP/pos-backend
+
 https://github.com/MDarqueaP/pos-authentication
 
 To check if your installation is ok, use the following commands:
@@ -55,11 +57,19 @@ To frontend project should be running in the following url:
 
 ## Test users
 SUPERADMIN (Has all routes access)
+
 user: admin@mail.com
+
 password: 12345
+
 USER_ADMIN (Has access to manage all the users)
+
 user: user.admin@mail.com
+
 password: 12345
+
 STORE_MANAGER (Has access to the products creation view and orders history)
+
 user: store.manager@mail.com
+
 password: 12345
