@@ -1,0 +1,52 @@
+<p-toast></p-toast>
+<div class="p-4">
+  <p-card>
+    <h1>Usuarios</h1>
+    <p-table #usersTable [value]="users" responsiveLayout="scroll" dataKey="id" [rows]="5" [paginator]="true"
+    [rowsPerPageOptions]="[5,10,25]" [showCurrentPageReport]="true"
+    currentPageReportTemplate="{first} a {last} de {totalRecords} usuarios"
+    [globalFilterFields]="['name','price']">
+    <ng-template pTemplate="caption">
+      <div class="grid">
+        <div class="col-12 md:col-6 flex">
+          <p-button label="Nuevo" icon="pi pi-plus" (onClick)="newUser()">
+          </p-button>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Estado</th>
+        <th>Roles</th>
+        <th>Fecha de creación</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <p-tag *ngIf="user.active" value="ACTIVO" class="p-tag-success"></p-tag>
+          <p-tag *ngIf="!user.active" value="INACTIVO"></p-tag>
+        </td>
+        <td>
+          <span *ngIf="user.roles.length === 0">
+            <p-tag value="Ninguno"></p-tag>
+          </span>
+          <span *ngFor="let role of user.roles">
+            <p-tag value="{{role.role.name}}"></p-tag>
+          </span>
+        </td>
+        <td>{{user.creationDate | date}}</td>
+        <td class="text-center">
+          <button pButton type="button" class="p-button-rounded p-button-text" icon="pi pi-pencil"
+            (click)="edit(user)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  </p-card>
+</div>

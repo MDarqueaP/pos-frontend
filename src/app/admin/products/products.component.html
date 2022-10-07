@@ -1,0 +1,58 @@
+<p-toast></p-toast>
+<div class="p-4">
+  <p-card>
+    <h1>Productos</h1>
+    <p-table #usersTable [value]="products" responsiveLayout="scroll" dataKey="id" [rows]="5" [paginator]="true"
+      [rowsPerPageOptions]="[5,10,25]" [showCurrentPageReport]="true"
+      currentPageReportTemplate="{first} a {last} de {totalRecords} productos" [globalFilterFields]="['name','price']">
+      <ng-template pTemplate="caption">
+        <div class="grid">
+          <div class="col-12 md:col-6 flex">
+            <p-button label="Nuevo" icon="pi pi-plus" (onClick)="newProduct()">
+            </p-button>
+          </div>
+          <div class="col-12 md:col-6 flex justify-content-end">
+            <span class="p-input-icon-left p-ml-auto max-w-full">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="usersTable.filterGlobal(getEventValue($event), 'contains')"
+                placeholder="Buscar" class="max-w-full" />
+            </span>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Stock</th>
+          <th>Fecha de creación</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td>{{product.name}}</td>
+          <td>{{product.price | currency}}</td>
+          <td>{{product.stock | number}}</td>
+          <td>
+            <p-tag severity="info" *ngIf="product.stock > 10">
+              En stock
+            </p-tag>
+            <p-tag severity="warning" *ngIf="product.stock > 0 && product.stock <= 10">
+              Quedan pocos
+            </p-tag>
+            <p-tag severity="danger" *ngIf="product.stock === 0">
+              Agotado
+            </p-tag>
+          </td>
+          <td>{{product.creationDate | date}}</td>
+          <td class="text-center">
+            <button pButton type="button" class="p-button-rounded p-button-text" icon="pi pi-pencil"
+              (click)="edit(product)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+</div>

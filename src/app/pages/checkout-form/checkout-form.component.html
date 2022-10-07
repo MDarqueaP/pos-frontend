@@ -1,0 +1,59 @@
+<div class="grid">
+  <div class="col-12 md:col-6">
+    <h4>Datos</h4>
+    <form class="w-full" [formGroup]="form" (ngSubmit)="submit()">
+      <p-messages [(value)]="msgs"></p-messages>
+      <div class="grid p-fluid">
+
+        <div class="col-12">
+          <label class="required" for="fullname">Nombre completo</label>
+          <input type="text" pInputText formControlName="fullname"
+            [ngClass]="{'ng-invalid ng-dirty': submitted && form.get('fullname')?.invalid}">
+          <small *ngIf="submitted && form.get('fullname')?.errors?.['required']" class="text-red-300">
+            Nombre completo es requerido.
+          </small>
+        </div>
+
+        <div class="col-12">
+          <label class="required" for="email">Correo electrónico</label>
+          <input type="text" pInputText formControlName="email"
+            [ngClass]="{'ng-invalid ng-dirty': submitted && form.get('email')?.invalid}">
+          <small *ngIf="submitted && form.get('email')?.errors?.['required']" class="text-red-300">
+            Correo electrónico es requerido.
+          </small>
+        </div>
+
+        <div class="col-12">
+          <label class="required" for="address">Dirección</label>
+          <input type="text" pInputText formControlName="address"
+            [ngClass]="{'ng-invalid ng-dirty': submitted && form.get('address')?.invalid}">
+          <small *ngIf="submitted && form.get('address')?.errors?.['required']" class="text-red-300">
+            Dirección es requerido.
+          </small>
+        </div>
+
+        <div class="col-12">
+          <label class="required" for="idNumber"># Identificación</label>
+          <input type="text" pInputText formControlName="idNumber"
+            [ngClass]="{'ng-invalid ng-dirty': submitted && form.get('idNumber')?.invalid}">
+          <small *ngIf="submitted && form.get('idNumber')?.errors?.['required']" class="text-red-300">
+            # Identificación es requerido.
+          </small>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="col-12 md:col-6">
+    <h4>Resumen</h4>
+    <p><b># de productos:</b></p>
+    <p>{{orderList.length}}</p>
+    <p><b>Total:</b></p>
+    <p>{{total}}</p>
+  </div>
+  <div class="col-12">
+    <div class="flex justify-content-center mt-3">
+      <button class="p-button-success" type="button" pButton label="Finalizar" (click)="submit()"></button>
+    </div>
+  </div>
+</div>

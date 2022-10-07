@@ -1,0 +1,119 @@
+<form class="w-full" [formGroup]="form" (ngSubmit)="submit()">
+  <p-messages [(value)]="msgs"></p-messages>
+  <div class="grid p-fluid">
+
+    <div class="col-12 md:col-6">
+      <label class="required" for="name">Nombre</label>
+      <input type="text" pInputText formControlName="name"
+        [ngClass]="{'ng-invalid ng-dirty': submitted && form.get('name')?.invalid}">
+      <small *ngIf="submitted && form.get('name')?.errors?.['required']" class="text-red-300">
+        Nombre es requerido.
+      </small>
+      <small *ngIf="submitted && form.get('name')?.errors?.['minlength']" class="text-red-300">
+        Nombre no válido.
+      </small>
+      <small *ngIf="submitted && form.get('name')?.errors?.['maxlength']" class="text-red-300">
+        Máximo 150 caracteres.
+      </small>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <label class="required" for="price">Precio</label>
+      <input type="text" pInputText formControlName="price"
+        [ngClass]="{'ng-invalid ng-dirty': submitted && form.get('price')?.invalid}">
+      <small *ngIf="submitted && form.get('price')?.errors?.['required']" class="text-red-300">
+        Precio es requerido.
+      </small>
+      <small *ngIf="submitted && form.get('price')?.errors?.['min']" class="text-red-300">
+        No puede ser menor a $0.
+      </small>
+      <small *ngIf="submitted && form.get('price')?.errors?.['min']" class="text-red-300">
+        Máximo $9999.
+      </small>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <label class="required" for="description">Descripción</label>
+      <p-editor formControlName="description" [style]="{'height':'320px'}"
+        [ngClass]="{'ng-invalid ng-dirty': submitted && form.get('description')?.invalid}">
+        <ng-template pTemplate="header">
+          <span class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+          </span>
+          <span class="ql-formats">
+            <select class="ql-color"></select>
+            <select class="ql-background"></select>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-list" value="ordered"></button>
+            <button class="ql-list" value="bullet"></button>
+            <select class="ql-align"></select>
+          </span>
+        </ng-template>
+      </p-editor>
+      <small *ngIf="submitted && form.get('description')?.errors?.['required']" class="text-red-300">
+        Descripción es requerido.
+      </small>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <label class="required" for="useCases">Casos de uso</label>
+      <p-editor formControlName="useCases" [style]="{'height':'320px'}"
+        [ngClass]="{'ng-invalid ng-dirty': submitted && form.get('useCases')?.invalid}">
+        <ng-template pTemplate="header">
+          <span class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-list" value="ordered"></button>
+            <button class="ql-list" value="bullet"></button>
+          </span>
+        </ng-template>
+      </p-editor>
+      <small *ngIf="submitted && form.get('useCases')?.errors?.['required']" class="text-red-300">
+        Casos de uso es requerido.
+      </small>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <label class="required" for="formatAvailable">Formato disponible</label>
+      <input type="text" pInputText formControlName="formatAvailable"
+        [ngClass]="{'ng-invalid ng-dirty': submitted && form.get('formatAvailable')?.invalid}">
+      <small *ngIf="submitted && form.get('formatAvailable')?.errors?.['required']" class="text-red-300">
+        Formato disponible es requerido.
+      </small>
+      <small *ngIf="submitted && form.get('formatAvailable')?.errors?.['minlength']" class="text-red-300">
+        Formato disponible no válido.
+      </small>
+      <small *ngIf="submitted && form.get('formatAvailable')?.errors?.['maxlength']" class="text-red-300">
+        Formato disponible 150 caracteres.
+      </small>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <label class="required" for="stock">Stock</label>
+      <input type="text" pInputText formControlName="stock"
+        [ngClass]="{'ng-invalid ng-dirty': submitted && form.get('stock')?.invalid}">
+      <small *ngIf="submitted && form.get('stock')?.errors?.['required']" class="text-red-300">
+        Stock es requerido.
+      </small>
+      <small *ngIf="submitted && form.get('stock')?.errors?.['min']" class="text-red-300">
+        Stock no válido.
+      </small>
+      <small *ngIf="submitted && form.get('stock')?.errors?.['min']" class="text-red-300">
+        Máximo 9999.
+      </small>
+    </div>
+
+    <div class="col-12">
+      <div class="flex justify-content-end mt-3">
+        <p-button class="mr-2" label="Guardar" (onClick)="submit()"></p-button>
+      </div>
+    </div>
+
+  </div>
+</form>

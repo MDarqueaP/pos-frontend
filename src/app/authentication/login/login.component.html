@@ -1,0 +1,59 @@
+<div class="grid bg-primary h-screen w-screen m-0">
+  <div class="h-100 lg:col-6 md:hidden lg:block login-img"></div>
+  <div class="h-100 col-12 lg:col-6 flex justify-content-center align-items-center">
+    <div>
+
+      <div class="flex justify-content-center mb-8">
+        <img src="/assets/images/edimca_logo.svg" alt="Logo edimca" width="300">
+      </div>
+
+      <p-messages [(value)]="msgs"></p-messages>
+
+      <form class="max-w-18rem mx-auto" [formGroup]="loginForm" (ngSubmit)="login()">
+
+        <h1 class="text-center text-white">{{ 'Login' | uppercase }}</h1>
+
+        <div class="grid p-fluid">
+          <div class="col-12">
+            <input type="text" pInputText formControlName="email" placeholder="{{ 'forms.email' | translate }}"
+              [ngClass]="{'ng-invalid ng-dirty': submitted && loginForm.get('email')?.invalid}">
+            <small *ngIf="submitted && loginForm.get('email')?.errors?.['required']" class="text-red-800">
+              Correo electrónico es requerido.
+            </small>
+            <small *ngIf="loginForm.get('email')?.errors?.['email']" class="text-red-800">
+              Este correo electrónico no es válido.
+            </small>
+          </div>
+
+          <div class="col-12">
+            <p-password formControlName="password" [feedback]="false" [toggleMask]="true" placeholder="{{ 'forms.password' | translate }}"
+              styleClass="p-password p-component p-inputwrapper p-input-icon-right"
+              [ngClass]="{'ng-invalid ng-dirty': submitted && loginForm.get('password')?.invalid}">
+            </p-password>
+            <small *ngIf="submitted && loginForm.get('password')?.errors?.['required']" class="text-red-800">
+              Contraseña es requerida.
+            </small>
+          </div>
+
+          <div class="col-12">
+            <div class="p-inputgroup">
+              <button class="w-full p-button-secondary" pButton type="submit" label="{{ 'forms.login' | translate | uppercase }}"></button>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="p-inputgroup flex justify-content-center">
+              <p class="m-0 text-color">
+                <a href="javascript: void(0);" class="text-white" routerLink="/">
+                  Ir al inicio
+                </a>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </form>
+      
+    </div>
+  </div>
+</div>

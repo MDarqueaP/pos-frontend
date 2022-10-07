@@ -1,0 +1,39 @@
+<p-toast></p-toast>
+<div class="home-banner flex align-items-center">
+  <div class="px-4 py-7" style="min-height: 200px;background-color: #0000006b;">
+    <h3 class="m-0 text-white text-2xl">Hagamos realidad tus proyectos</h3>
+    <h1 class="text-white text-6xl">Catálogo de Productos</h1>
+    <p class="text-white m-0">Vendemos la madera de mejor calidad en Ecuador</p>
+    <p class="text-white m-0" style="max-width: 600px;">Encuentra playwood, mdf, melamínicos, tablas triplex,
+      aglomerado, tablones, formica,
+      tableros y herrajes.</p>
+  </div>
+</div>
+<h3 class="text-center my-7 text-5xl">¿Qué estás buscando?</h3>
+<div class="grid px-6">
+  <div class="col-12 md:col-3" *ngFor="let product of products">
+    <p-card class="cursor-pointer" (click)="openDetail(product)">
+      <ng-template pTemplate="header">
+        <img src="/assets/images/product_placeholder.jpeg" alt="product image">
+      </ng-template>
+      <ng-template pTemplate="content">
+        <h4>{{product.name}}</h4>
+        <p class="mt-0">{{product.price | currency}}</p>
+        <p-tag severity="info" *ngIf="product.stock > 10">
+          En stock
+        </p-tag>
+        <p-tag severity="warning" *ngIf="product.stock > 0 && product.stock <= 10">
+          Quedan pocos
+        </p-tag>
+        <p-tag severity="danger" *ngIf="product.stock === 0">
+          Agotado
+        </p-tag>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <div class="flex justify-content-end">
+          <button type="button" pButton label="Comprar" class="p-button-secondary ml-3"></button>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</div>

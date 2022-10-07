@@ -1,0 +1,13 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <img src="/assets/images/edimca_logo.svg" height="20" class="p-mr-2 cursor-pointer" alt="brand logo" [routerLink]="'/'">
+  </ng-template>
+  <ng-template pTemplate="end">
+    <button *ngIf="!loggedIn" class="p-button-secondary" type="button" pButton label="Entrar" icon="pi pi-user" [routerLink]="'/auth/login'"></button>
+    <button *ngIf="loggedIn" class="p-button-secondary" type="button" pButton label="Salir" icon="pi pi-power-off" (click)="logout()"></button>
+  </ng-template>
+</p-menubar>
+<div class="layout-content">
+  <router-outlet></router-outlet>
+</div>
+<app-spinner></app-spinner>

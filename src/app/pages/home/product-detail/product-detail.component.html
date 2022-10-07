@@ -1,0 +1,24 @@
+<div class="grid">
+  <div class="col-12 md:col-6">
+    <img class="w-full" src="/assets/images/product_placeholder.jpeg" alt="product image">
+  </div>
+  <div class="col-12 md:col-6">
+    <p><b>Descripción</b></p>
+    <p>{{product.description}}</p>
+    <p><b>Usos y aplicaciones:</b></p>
+    <p>{{product.useCases}}</p>
+    <p><b>Formato disponible:</b></p>
+    <p>{{product.formatAvailable}}</p>
+    <p><b>Precio unitario:</b></p>
+    <p>{{product.price | currency}}</p>
+    <div *ngIf="product.stock > 0">
+      <p-inputNumber [(ngModel)]="quantity" [showButtons]="true" buttonLayout="horizontal" [size]="1" [min]="0"
+        [max]="product.stock"></p-inputNumber>
+      <button type="button" pButton icon="pi pi-cart-plus" class="p-button-secondary ml-3"
+        (click)="addToCart(product, quantity)"></button>
+    </div>
+    <p-tag severity="danger" *ngIf="product.stock === 0">
+      Agotado
+    </p-tag>
+  </div>
+</div>

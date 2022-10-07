@@ -1,27 +1,65 @@
-# PosFrontend
+# POS Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+## Features
 
-## Development server
+- Client entrypoint.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prerequisites
 
-## Code scaffolding
+You need the following installations in your local machine to build and run the project:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| Dependency | URL |
+| ------ | ------ |
+|Nodejs >=17.6.0|https://nodejs.org/en/download/|
+| Git | https://git-scm.com/downloads |
+
+Also is necessary that the **authentication** and **backend** microservices are already running.
+https://github.com/MDarqueaP/pos-backend
+https://github.com/MDarqueaP/pos-authentication
+
+To check if your installation is ok, use the following commands:
+### Nodejs
+```sh
+node -v
+```
+### Git
+```sh
+git --version
+```
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To build the project use the following steps:
 
-## Running unit tests
+1) Clone the repository.
+2) Enter to the cloned project directory using the command prompt.
+3) Build the project using the following command:
+    ```sh
+    npm run build
+    ```
+4) Install all the project dependencies with:
+    ```sh
+    npm install
+    ```
+5) Inside the prohect directory go with your command prompt to the server folder, once inside install the server dependencies with:
+    ```sh
+    npm install
+    ```
+6) Once the server compilation has finished, run the project on your local machine with:
+    ```sh
+    npm run start
+    ```
+## Check if the project is running
+To frontend project should be running in the following url:
+**http://localhost:8083**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Test users
+SUPERADMIN (Has all routes access)
+user: admin@mail.com
+password: 12345
+USER_ADMIN (Has access to manage all the users)
+user: user.admin@mail.com
+password: 12345
+STORE_MANAGER (Has access to the products creation view and orders history)
+user: store.manager@mail.com
+password: 12345

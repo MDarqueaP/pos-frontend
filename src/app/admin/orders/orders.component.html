@@ -1,0 +1,39 @@
+<p-toast></p-toast>
+<div class="p-4">
+  <p-card>
+    <h1>Órdenes</h1>
+    <p-table #usersTable [value]="orders" responsiveLayout="scroll" dataKey="id" [rows]="5" [paginator]="true"
+      [rowsPerPageOptions]="[5,10,25]" [showCurrentPageReport]="true"
+      currentPageReportTemplate="{first} a {last} de {totalRecords} productos" [globalFilterFields]="['name','price']">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Comprador</th>
+          <th>Fecha</th>
+          <th>Productos</th>
+          <th>Total</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-order>
+        <tr>
+          <td>
+            <p class="m-0">{{order.detail.fullname}}</p>
+            <small class="m-0">{{order.detail.email}}</small>
+            <br>
+            <small>{{order.detail.idNumber}}</small>
+          </td>
+          <td>
+            {{order.detail.creationDate | date}}
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let product of order.products">
+                {{product.product.name}} (X{{product.quantity}})
+              </li>
+            </ul>
+          </td>
+          <td>{{order.detail.total | currency}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+</div>
