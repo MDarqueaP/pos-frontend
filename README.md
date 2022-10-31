@@ -35,13 +35,13 @@ To build the project use the following steps:
 
 1) Clone the repository.
 2) Enter to the cloned project directory using the command prompt.
-3) Build the project using the following command:
-    ```sh
-    npm run build
-    ```
-4) Install all the project dependencies with:
+3) Install all the project dependencies with:
     ```sh
     npm install
+    ```
+4) Build the project using the following command:
+    ```sh
+    npm run build
     ```
 5) Inside the prohect directory go with your command prompt to the server folder, once inside install the server dependencies with:
     ```sh
